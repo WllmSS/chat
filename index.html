@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Voz da Escola — Rede Anônima</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>--anônimus--</h1>
+          <div class="subtitle">converse anônimamente sobre seus assuntos preferidos</div>
+        </div>
+      </div>
+
+      <!-- User menu -->
+      <div class="user">
+        <button class="user-btn" id="btnUser" title="Usuário" aria-haspopup="true" aria-expanded="false">👤</button>
+        <div class="popover" id="userPopover" role="menu" aria-hidden="true">
+          <!-- Deslogado -->
+          <div class="menu menu-out" id="menuOut">
+            <div class="user-line">
+              <div class="pill">👤</div>
+              <div class="muted">Entre para postar e curtir</div>
+            </div>
+            <button class="btn-pop primary" id="openSignUp">Cadastrar</button>
+            <button class="btn-pop" id="openLogin">Logar</button>
+          </div>
+
+          <!-- Logado -->
+          <div class="menu menu-in" id="menuIn" style="display:none;">
+            <div class="user-line">
+              <div class="pill">👤</div>
+              <div id="userNameLabel">Usuário</div>
+            </div>
+            <button class="btn-pop danger" id="btnLogout">Sair</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="card composer" aria-label="Criar publicação">
+      <textarea id="texto" maxlength="280" placeholder="Digite sua mensagem..." disabled></textarea>
+      <div class="row">
+        <select id="turma" disabled>
+          <option value="">SEU ASSUNTO</option>
+          <option>Games</option>
+          <option>Filmes</option>
+          <option>Livros</option>
+          <option>cultura pop</option>
+          <option>musica</option>
+          <option>RPG</option>
+          <option>automoveis</option>
+          <option>culinaria</option>
+        </select>
+
+        <!-- Alterna entre cadeado e botão Publicar -->
+        <div id="wrapAction">
+          <div class="lock-pill" id="lockPill" aria-hidden="false">🔒</div>
+          <button id="btnPost" class="primary" style="display:none;">Publicar</button>
+        </div>
+
+        <span class="muted" id="charCount">0/280</span>
+      </div>
+
+      <div class="filters">
+        <select id="filtroTurma">
+          <option value="__todas__">FILTRO DE ASSUNTOS</option>
+          <option>Games</option>
+          <option>Filmes</option>
+          <option>Livros</option>
+          <option>cultura pop</option>
+          <option>musica</option>
+          <option>RPG</option>
+          <option>automoveis</option>
+          <option>culinaria</option>
+        </select>
+        <input type="search" id="busca" placeholder="Buscar no feed..." />
+      </div>
+    </section>
+
+    <section class="feed" id="feed" aria-live="polite" aria-busy="true"></section>
+    <div id="empty" class="empty" style="display:none;">Nenhuma publicação ainda. Seja o primeiro a postar! 🎉</div>
+
+    <footer>
+      <span class="muted">Dica: use o botão á esquerda para entrar em chat de assuntos especificos.</span>
+    </footer>
+  </div>
+
+  <!-- MODAL: CADASTRO -->
+  <div class="modal-backdrop" id="signupModal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
+      <h2 id="signupTitle">cadastro</h2>
+      <div class="field"><input id="suEmail" type="email" placeholder="seu email..." autocomplete="email"></div>
+      <div class="field"><input id="suPass" type="password" placeholder="crie senha ..." autocomplete="new-password"></div>
+      <div class="field"><input id="suPass2" type="password" placeholder="confirme sua senha ..." autocomplete="new-password"></div>
+      <div class="field"><input id="suDisplay" type="text" placeholder="Seu nome no site ..."></div>
+      <div class="helper"><strong>ATENÇÃO:</strong> Só você pode ver seu nome e Email</div>
+      <div class="error" id="suErr"></div>
+      <div class="actions">
+        <button class="ghost" data-close="#signupModal">cancelar</button>
+        <button class="primary" id="doSignUp">cadastrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: LOGIN -->
+  <div class="modal-backdrop" id="loginModal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <h2 id="loginTitle">login</h2>
+      <div class="field"><input id="liEmail" type="email" placeholder="seu email..." autocomplete="email"></div>
+      <div class="field"><input id="liPass" type="password" placeholder="sua senha ..." autocomplete="current-password"></div>
+      <div class="error" id="liErr"></div>
+      <div class="actions">
+        <button class="ghost" data-close="#loginModal">cancelar</button>
+        <button class="primary" id="doLogin">entrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
