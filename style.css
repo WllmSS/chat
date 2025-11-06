@@ -42,9 +42,22 @@ header {
 }
 .brand { display: flex; align-items: center; gap: 12px; }
 .logo {
-  width: 40px; height: 40px; border-radius: 12px;
-  background: radial-gradient(circle at 30% 30%, var(--accent-2), var(--accent));
-  box-shadow: 0 8px 30px rgba(124,137,255,.35);
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(124,137,255,.12), rgba(97,218,251,.06));
+  border: 1px solid var(--stroke);
+}
+.logo::before {
+  content: "A";
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  /* contraste mais claro para o "A" */
+  color: #7700ff;
+  line-height: 1;
 }
 h1 { font-size: 1.25rem; margin: 0; }
 .subtitle { color: var(--sub); font-size: .9rem; }
